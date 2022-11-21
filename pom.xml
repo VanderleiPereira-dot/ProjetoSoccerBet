@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apaFche.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -20,22 +20,28 @@
         <version>2.2.4.RELEASE</version>
     </parent>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    <profiles>
+        <profile>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <id>desenvolvimento</id>
+            <properties>
+                <project.packaging>jar</project.packaging>
+                <tomcat.scope>compile</tomcat.scope>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>producao</id>
+            <properties>
+                <project.packaging>war</project.packaging>
+                <tomcat.scope>provided</tomcat.scope>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
-        <dependency>
-           <groupId>com.google.code.gson</groupId>
-           <artifactId>gson</artifactId>
-           <version>2.3.1</version>
-        </dependency>
-
         <dependency>
            <groupId>org.springframework.boot</groupId>
            <artifactId>spring-boot-starter</artifactId>
@@ -60,7 +66,7 @@
         <dependency>
            <groupId>org.springframework.boot</groupId>
            <artifactId>spring-boot-starter-security</artifactId>
-       </dependency>
+        </dependency>
 
         <dependency>
            <groupId>org.springframework.boot</groupId>
@@ -83,42 +89,45 @@
            <scope>provided</scope>
         </dependency>
 
-       <dependency>
+        <dependency>
           <groupId>io.jsonwebtoken</groupId>
           <artifactId>jjwt</artifactId>
           <version>0.9.1</version>
-       </dependency>
+        </dependency>
 
-       <dependency>
+        <dependency>
           <groupId>io.springfox</groupId>
           <artifactId>springfox-swagger2</artifactId>
           <version>2.9.2</version>
-       </dependency>
+        </dependency>
 
-       <dependency>
+        <dependency>
           <groupId>io.springfox</groupId>
           <artifactId>springfox-swagger-ui</artifactId>
           <version>2.9.2</version>
-       </dependency>
+        </dependency>
 
-       <dependency>
+        <dependency>
           <groupId>org.jetbrains</groupId>
           <artifactId>annotations</artifactId>
           <version>RELEASE</version>
           <scope>compile</scope>
-       </dependency>
+        </dependency>
 
-       <dependency>
-          <groupId>com.google.errorprone</groupId>
-          <artifactId>javac-shaded</artifactId>
-          <version>9+181-r4173-1</version>
-       </dependency>
-
-       <dependency>
+        <dependency>
           <groupId>org.projectlombok</groupId>
           <artifactId>lombok</artifactId>
           <version>1.18.16</version>
           <scope>compile</scope>
-       </dependency>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

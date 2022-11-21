@@ -21,5 +21,10 @@
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="lib-boleto-util" />
+      <option name="name" value="oci" />
+      <option name="url" value="https://devops-cnisafira.developer.ocp.oraclecloud.com/profile/devops-cnisafira/s/devops-cnisafira_lib-boleto-util_14978/maven" />
+    </remote-repository>
   </component>
 </project>
